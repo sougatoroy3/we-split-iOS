@@ -43,7 +43,9 @@ struct ContentView: View {
             Form{
                 //Section 1 for the input and selection
                 Section{
-                    TextField("Amount ", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD")).focused($amountIsFocused)
+                    TextField("Amount ", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .keyboardType(.decimalPad)
+                        .focused($amountIsFocused)
                     //1st parameter is the placeholder text, 2nd one is the two-way binding to our property, 3rd is the way the text is formatted
                     
                     Picker("Number of people ", selection: $numberOfpeople){
