@@ -13,6 +13,11 @@ struct ContentView: View {
     @State private var numberOfpeople = 2
     @State private var tipPercentage = 20
     
+    // Computed property to check if tip is 0
+    var tipValueIsZero: Bool {
+        return tipPercentage == 0
+    }
+    
     @FocusState private var amountIsFocused: Bool
     
     //let tipPercentages = [10, 15, 20, 25, 0]
@@ -71,6 +76,7 @@ struct ContentView: View {
                 Section("Your total amount"){
                     
                     Text(total, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundStyle(tipValueIsZero ? .red : .primary)
                 }
                 
                 //Section 4 for displaying the Split Amount
